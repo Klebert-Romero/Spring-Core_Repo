@@ -4,6 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import idat.edu.pe.daa2.spring.core.di.automatica.PagoAgencia;
+import idat.edu.pe.daa2.spring.core.di.automatica.PagoAgente;
+import idat.edu.pe.daa2.spring.core.di.automatica.PagoI;
+import idat.edu.pe.daa2.spring.core.di.automatica.PagoInternet;
 import idat.edu.pe.daa2.spring.core.di.tradicional.Automovil;
 import idat.edu.pe.daa2.spring.core.di.tradicional.Tractor;
 import idat.edu.pe.daa2.spring.core.di.tradicional.VehiculoI;
@@ -19,11 +23,15 @@ public class SpringCoreProjectAppApplication {
 	public static void main(String[] args) {
 		
 		
-		String nombre = "Christian Castillo";
+		//String nombre = "Christian Castillo";
 		
-		ConfigurableApplicationContext cxt = SpringApplication.run(SpringCoreProjectAppApplication.class, args);
+		ConfigurableApplicationContext ctx = SpringApplication.run(SpringCoreProjectAppApplication.class, args);
 		
-		/*SaludoI saludo1 = (SaludoEspannol)cxt.getBean("saludoEspannol");
+		/*PagoI servicioPago = ctx.getBean(PagoInternet.class);
+		
+		servicioPago.realizarPago();
+		
+		SaludoI saludo1 = (SaludoEspannol)cxt.getBean("saludoEspannol");
 		System.out.println("saludo 1 en español : " + saludo1.saludar(nombre));		
 				
 	    SaludoI saludo2 = (SaludoIngles)cxt.getBean("saludoIngles");
@@ -32,7 +40,7 @@ public class SpringCoreProjectAppApplication {
 	    SaludoI saludo3 = (SaludoPortugues)cxt.getBean("saludoBrasilero");
 	    System.out.println("saludo 3 en portugues : " + saludo3.saludar(nombre));*/
 		
-		ViajarVehiculo viaje = new ViajarVehiculo();
+		/*ViajarVehiculo viaje = new ViajarVehiculo();
 		
 		// Viajando en Automovil
 		viaje.setVehiculo(cxt.getBean(Automovil.class));
@@ -48,6 +56,15 @@ public class SpringCoreProjectAppApplication {
 		
 		// Viajando en Tractor
 		viaje.setVehiculo(cxt.getBean(Tractor.class));
+		viaje.empezarAcelerar();*/
+		
+		/*PagoI servicioPago2 = ctx.getBean(PagoAgencia.class);
+		servicioPago2.realizarPago();*/
+		
+		PagoI servicioPago3 = ctx.getBean(PagoAgente.class);
+		servicioPago3.realizarPago();
+		
+		
 	}
 
 }
